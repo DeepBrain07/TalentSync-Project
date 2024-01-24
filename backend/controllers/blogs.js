@@ -4,13 +4,21 @@ import User from "../models/userModel.js";
 import Post from "../models/postModel.js";
 
 const getBlog =  asyncHandler(async(req, res) => {
-    let minPostId = 0;
+    let minPostId = 1;
+    const minPostIdOld = (req.body.minPostId);
+    if (minPostIdOld) {
+        minPostId = minPostIdOld;
+    }
     let maxPostId = minPostId + 10;
     const blogs =  await Post.find({
         postId: { $gte: minPostId, $lte: maxPostId }
       });
-    console.log(blogs)
-    res.send(200)
+    if (blogs) {
+        console.log(blogs)
+        res.cookie(minPostId, maxPostId)
+        res.status(200).json({blogs})
+    }
+    
 });
 
 const postBlog = asyncHandler(async(req, res) => {
@@ -43,4 +51,53 @@ const postBlog = asyncHandler(async(req, res) => {
     res.send(200)
 })
 
-export {getBlog, postBlog};
+const updateBlog =  asyncHandler(async(req, res) => {
+    const userId = req.body.userId;
+    const postID = req.body.postID;
+    const title = req.body.title;
+    const content = req.body.content;
+    try {
+            const post = await Post.findOne({_id:postID})
+            if (post && (String(post.user._id) === userId)) {
+                if (title && content) {
+                    const result = await Post.updateOne({ _id: postID }, { $set: {title, content} });
+                    console.log("UPDATEDDD both title and content", result);
+                    res.send(200)
+                } else {
+                    const result = await Post.updateOne({ _id: postID }, { $set: {content} });
+                    console.log("UPDATEDDD just content", result);
+                    res.send(200)
+                }
+            } else {
+                console.log(userId, String(post.user._id))
+                res.send(401, "Unauthorised access")
+            }
+        } catch (error) {
+        console.error('Error updating post:', error);
+        throw error;
+    }
+})
+
+const deleteBlog = asyncHandler(async(req, res) => {
+    const userId = req.body.userId;
+    const postID = req.body.postID;
+    try {
+            const post = await Post.findOne({_id:postID})
+            if (post && (String(post.user._id) === userId)) {
+                const result = await post.deleteOne({_id:postID});
+                if (result) {
+                    res.send(200, "Successfully Deleted")
+                } else {
+                    res.send("Unable to delete")
+                }
+            } else {
+                console.log(userId, String(post.user._id))
+                res.send(401, "Unauthorised access")
+            }
+        } catch (error) {
+        console.error('Error deleting post:', error);
+        throw error;
+    }
+});
+
+export {getBlog, postBlog, updateBlog, deleteBlog};
