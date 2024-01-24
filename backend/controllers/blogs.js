@@ -3,6 +3,15 @@ import auth from "../middlewares/authMiddleware.js";
 import User from "../models/userModel.js";
 import Post from "../models/postModel.js";
 
+const getBlog =  asyncHandler(async(req, res) => {
+    let minPostId = 0;
+    let maxPostId = minPostId + 10;
+    const blogs =  await Post.find({
+        postId: { $gte: minPostId, $lte: maxPostId }
+      });
+    console.log(blogs)
+    res.send(200)
+});
 
 const postBlog = asyncHandler(async(req, res) => {
     const userId = req.cookies.userId;
@@ -34,4 +43,4 @@ const postBlog = asyncHandler(async(req, res) => {
     res.send(200)
 })
 
-export {postBlog};
+export {getBlog, postBlog};

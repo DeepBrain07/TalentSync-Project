@@ -2,7 +2,7 @@ import express  from "express";
 const router = express.Router();
 import signinController from './controllers/signinController.js';
 import signupController from "./controllers/signupController.js";
-import { postBlog } from "./controllers/blogs.js";
+import { getBlog, postBlog } from "./controllers/blogs.js";
 
 router.get('/home')
 
@@ -17,7 +17,7 @@ router
 .post(signinController);
 
 router.route('/blog')
-.get()
+.get(getBlog)
 .post(postBlog);
 
 router.post('/signout');
