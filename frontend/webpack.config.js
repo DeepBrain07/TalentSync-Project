@@ -8,7 +8,10 @@ export default {
   },
   module: {
     rules: [
-      // Add any necessary loaders for your project (e.g., for Babel, CSS, etc.)
+        {
+          test: /\.html$/,
+          use: 'html-loader',
+        }
     ],
   },
 };
