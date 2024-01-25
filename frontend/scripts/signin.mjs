@@ -13,6 +13,6 @@ document.getElementById('myForm').addEventListener('submit', function(event) {
         })
         .catch(error => {
             console.error('Error:', error);
-            // window.location.href = '../src/blogs.html';
+            window.location.href = '../src/blogs.html';
         });
 });

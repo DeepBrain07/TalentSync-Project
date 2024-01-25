@@ -5,16 +5,36 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="./output.css" rel="stylesheet">
 </head>
-<body>
-  <h1 class="text-blue-600">
-    WELCOME! You have successsfully logged in.
-  </h1>
-  <div>
-    <form action="http://localhost:5000/blog" method="post" id="myForm">
-      <textarea placeholder="Title" class="mt-2 md:mt-4 text-black px-2 pt-2 pb-16 rounded-md w-[90%] md:w-full" type="text" id="title" name="title" required></textarea></br>
-      <textarea placeholder="Make a post" class="mt-2 md:mt-4 text-black px-2 pt-2 pb-16 rounded-md w-[90%] md:w-full" type="text" id="post" name="post" required></textarea></br>
-      <button class="p-2 rounded-md bg-blue-700 w-[90%] md:w-full hover:text-blue-700 hover:border-2 hover:border-blue-700 hover:bg-white cursor-pointer"  id="sendPost" type="submit">Post</button>
+<body class="py-6 font-medium px-4">
+  <div id="formContainer" class="flex-col justify-end hidden rounded-md pb-8 pl-8 pt-4 z-20 bg-white text-blue-700  fixed top-[15%] w-[80%] left-[10%] right-[10%]">
+    <div id="closepoup" class="w-full pl-[80%]">
+      <svg class="w-[2em] h-[2em]" viewBox="0 0 512 512" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title>cancel</title> <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"> <g id="work-case" fill="#2563EB" transform="translate(91.520000, 91.520000)"> <polygon id="Close" points="328.96 30.2933333 298.666667 1.42108547e-14 164.48 134.4 30.2933333 1.42108547e-14 1.42108547e-14 30.2933333 134.4 164.48 1.42108547e-14 298.666667 30.2933333 328.96 164.48 194.56 298.666667 328.96 328.96 298.666667 194.56 164.48"> </polygon> </g> </g> </g></svg>
+    </div>
+    <form action="http://localhost:5000/blog" method="post"  id="myForm" class="full">
+      <label for="title"> Title </label></br>
+        <input placeholder="Title" class="border border-blue-700 mt-2 md:mt-4 text-black px-2 pt-2 pb-16 rounded-md h-[3px] w-[90%] md:w-full" type="text" id="title" name="title" required></br></br>
+        <label for="content"> Content </label></br>
+        <textarea placeholder="Make a post" class="border border-blue-700 mt-2 md:mt-4 text-black px-2 pt-2 pb-16 rounded-md h-[40%] w-[90%] md:w-full" type="text" id="post" name="post" required></textarea></br>
+      <button class="p-2 rounded-md bg-blue-700 w-[90%] md:w-full text-white hover:text-blue-700 hover:border-2 hover:border-blue-700 hover:bg-white cursor-pointer"  id="sendPost" type="submit">Post</button>
     </form>
+  </div>
+  <div id="fullBody">
+    <div id="upload" class="fixed right-[20%] left-[80%] top-[85%] bottom-[15%]">
+      <svg class="w-[3.5em] h-[3.5em] md:w-[4.5em] md:h-[4.5em]" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns" fill="#0000" stroke=""><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title>plus-circle</title> <desc>Created with Sketch Beta.</desc> <defs> </defs> <g id="Page-1" stroke="#0000" stroke-width="1" fill="#0000"  sketch:type="MSPage"> <g id="Icon-Set-Filled" sketch:type="MSLayerGroup" transform="translate(-466.000000, -1089.000000)" fill="#2563EB"> <path d="M488,1106 L483,1106 L483,1111 C483,1111.55 482.553,1112 482,1112 C481.447,1112 481,1111.55 481,1111 L481,1106 L476,1106 C475.447,1106 475,1105.55 475,1105 C475,1104.45 475.447,1104 476,1104 L481,1104 L481,1099 C481,1098.45 481.447,1098 482,1098 C482.553,1098 483,1098.45 483,1099 L483,1104 L488,1104 C488.553,1104 489,1104.45 489,1105 C489,1105.55 488.553,1106 488,1106 L488,1106 Z M482,1089 C473.163,1089 466,1096.16 466,1105 C466,1113.84 473.163,1121 482,1121 C490.837,1121 498,1113.84 498,1105 C498,1096.16 490.837,1089 482,1089 L482,1089 Z" id="plus-circle" sketch:type="MSShapeGroup"> </path> </g> </g> </g></svg>
+    </div>
+    <h1 class="text-blue-700 font-extrabold text-4xl pb-8">
+      BLOG
+    </h1>
+    
+    <div id="blogs" class="flex flex-col w-[100%] ">
+
+    </div>
+    <div id="blogElement" class="font-bold ">
+    
+    </div>
+    <div id="more">
+      More
+    </div>
   </div>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>

@@ -4,18 +4,23 @@ import User from "../models/userModel.js";
 import Post from "../models/postModel.js";
 
 const getBlog =  asyncHandler(async(req, res) => {
+    const more = req.body.more;
     let minPostId = 1;
-    const minPostIdOld = (req.body.minPostId);
-    if (minPostIdOld) {
-        minPostId = minPostIdOld;
+    if (more) {
+        minPostId = req.cookies.minPostId ? req.cookies.minPostId : 1;
+        if (minPostId > req.cookies.numOfPosts) {
+            minPostId = 1;
+        }
     }
-    let maxPostId = minPostId + 10;
+
+    const maxPostId = parseInt(minPostId) + 10;
     const blogs =  await Post.find({
         postId: { $gte: minPostId, $lte: maxPostId }
-      });
+      }).populate("user");
     if (blogs) {
-        console.log(blogs)
-        res.cookie(minPostId, maxPostId)
+        // console.log(blogs)
+        console.log(maxPostId)
+        res.cookie('minPostId', maxPostId)
         res.status(200).json({blogs})
     }
     
@@ -45,6 +50,8 @@ const postBlog = asyncHandler(async(req, res) => {
             //     throw error;
             // }
             console.log(newPost.postId)
+            res.cookie('numOfPosts', parseInt(req.cookies.numOfPosts) + 1)
+        } else {
         }
             
     }
@@ -86,12 +93,13 @@ const deleteBlog = asyncHandler(async(req, res) => {
             if (post && (String(post.user._id) === userId)) {
                 const result = await post.deleteOne({_id:postID});
                 if (result) {
+                    res.cookie('numOfPosts', parseInt(req.cookies.numOfPosts) - 1)
                     res.send(200, "Successfully Deleted")
                 } else {
                     res.send("Unable to delete")
                 }
             } else {
-                console.log(userId, String(post.user._id))
+                // console.log(userId, String(post.user._id))
                 res.send(401, "Unauthorised access")
             }
         } catch (error) {

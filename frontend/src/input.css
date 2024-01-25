@@ -1,3 +1,71 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.inactive {
+    background-color: rgba(0, 0, 0, 0.2); /* Optional: Reduce opacity to visually indicate inactivity */
+    pointer-events: none; /* Make the element inactive for user interactions */
+  }
+
+#formContainer {
+    opacity: 1;
+}
+
+#blogTitle {
+    color: #D97706;
+    text-transform: uppercase;
+    font-weight: bolder;
+}
+
+#titleDiv {
+    display: flex;
+    flex-direction: row;
+    gap: 2em;
+}
+
+.updateBlog {
+    color: #2563EB;
+    cursor: pointer;
+}
+
+.deleteBlog {
+    color: red;
+    cursor: pointer;
+}
+
+#parentDiv {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 1.5em;
+    margin-bottom: 6em;
+    border-bottom: dashed 1px #2563EB;
+}
+
+#parentDiv2 {
+    padding-right: 10%;
+    padding-left: 10%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: justify;
+}
+
+#parentDiv3 {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+#blogtime {
+    font-style: italic;
+}
+
+#blogAuthor {
+    font-weight:bolder;
+    color: #D97706;
+}

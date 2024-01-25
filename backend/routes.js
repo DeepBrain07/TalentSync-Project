@@ -3,6 +3,7 @@ const router = express.Router();
 import signinController from './controllers/signinController.js';
 import signupController from "./controllers/signupController.js";
 import { getBlog, postBlog, updateBlog, deleteBlog } from "./controllers/blogs.js";
+import { protect } from "./middlewares/authMiddleware.js";
 
 router.get('/home')
 
