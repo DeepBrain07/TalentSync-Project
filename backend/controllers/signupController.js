@@ -23,6 +23,8 @@ const signupController = asyncHandler(async (req, res) => {
             if (user) {
                 auth(req, res)
                 res.send(200, "Account Successfully Created")
+            } else {
+                res.send("An error occured")
             }
         }
     }

@@ -25,8 +25,8 @@ const auth = asyncHandler(async(req, res) => {
         if (posts) {
             const numOfPosts = posts.length;
             res.cookie('numOfPosts', numOfPosts)
+            res.send(200, "Successfully logged in");
         }
-        res.status(200);
     } else {
         res.status(401)
     }
