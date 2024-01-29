@@ -1,3 +1,5 @@
+
+const warning = document.getElementById("warning");
 document.getElementById('myForm').addEventListener('submit', function(event) {
     event.preventDefault(); // Prevent the default form submission
 
@@ -10,11 +12,16 @@ document.getElementById('myForm').addEventListener('submit', function(event) {
     axios.post(this.action, formData)
         .then(response => {
             // Handle the response data here
-            console.log('Response:', response);
-            window.location.href = '../src/blogs.html';
+            if (response.status === 200) {
+                console.log('Response:', response);
+                window.location.href = '../src/signin.html';   
+            } else {
+                warning.style.display = 'block';
+            }
         })
         .catch(error => {
             console.error('Error:', error);
+            warning.style.display = 'block';
             // window.location.href = '../src/blogs.html';
         });
 });

@@ -548,6 +548,10 @@ video {
   position: fixed;
 }
 
+.absolute {
+  position: absolute;
+}
+
 .bottom-\[15\%\] {
   bottom: 15%;
 }
@@ -576,12 +580,32 @@ video {
   top: 85%;
 }
 
+.bottom-\[100\%\] {
+  bottom: 100%;
+}
+
+.top-\[0\%\] {
+  top: 0%;
+}
+
 .z-20 {
   z-index: 20;
 }
 
+.mb-40 {
+  margin-bottom: 10rem;
+}
+
+.mb-8 {
+  margin-bottom: 2rem;
+}
+
 .mt-2 {
   margin-top: 0.5rem;
+}
+
+.mb-6 {
+  margin-bottom: 1.5rem;
 }
 
 .flex {
@@ -660,12 +684,24 @@ video {
   justify-content: center;
 }
 
+.justify-between {
+  justify-content: space-between;
+}
+
 .rounded-md {
   border-radius: 0.375rem;
 }
 
 .border {
   border-width: 1px;
+}
+
+.border-b-2 {
+  border-bottom-width: 2px;
+}
+
+.border-l-4 {
+  border-left-width: 4px;
 }
 
 .border-amber-600 {
@@ -678,9 +714,29 @@ video {
   border-color: rgb(29 78 216 / var(--tw-border-opacity));
 }
 
+.border-yellow-500 {
+  --tw-border-opacity: 1;
+  border-color: rgb(234 179 8 / var(--tw-border-opacity));
+}
+
+.border-red-500 {
+  --tw-border-opacity: 1;
+  border-color: rgb(239 68 68 / var(--tw-border-opacity));
+}
+
+.border-green-500 {
+  --tw-border-opacity: 1;
+  border-color: rgb(34 197 94 / var(--tw-border-opacity));
+}
+
 .bg-amber-600 {
   --tw-bg-opacity: 1;
   background-color: rgb(217 119 6 / var(--tw-bg-opacity));
+}
+
+.bg-blue-600 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(37 99 235 / var(--tw-bg-opacity));
 }
 
 .bg-blue-700 {
@@ -693,8 +749,17 @@ video {
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
 
+.bg-yellow-100 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(254 249 195 / var(--tw-bg-opacity));
+}
+
 .p-2 {
   padding: 0.5rem;
+}
+
+.p-4 {
+  padding: 1rem;
 }
 
 .px-2 {
@@ -720,8 +785,16 @@ video {
   padding-bottom: 4rem;
 }
 
+.pb-6 {
+  padding-bottom: 1.5rem;
+}
+
 .pb-8 {
   padding-bottom: 2rem;
+}
+
+.pl-2 {
+  padding-left: 0.5rem;
 }
 
 .pl-8 {
@@ -732,8 +805,16 @@ video {
   padding-left: 80%;
 }
 
+.pr-8 {
+  padding-right: 2rem;
+}
+
 .pt-2 {
   padding-top: 0.5rem;
+}
+
+.pt-28 {
+  padding-top: 7rem;
 }
 
 .pt-4 {
@@ -786,9 +867,34 @@ video {
   color: rgb(29 78 216 / var(--tw-text-opacity));
 }
 
+.text-red-500 {
+  --tw-text-opacity: 1;
+  color: rgb(239 68 68 / var(--tw-text-opacity));
+}
+
 .text-white {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+.text-yellow-700 {
+  --tw-text-opacity: 1;
+  color: rgb(161 98 7 / var(--tw-text-opacity));
+}
+
+.text-red-700 {
+  --tw-text-opacity: 1;
+  color: rgb(185 28 28 / var(--tw-text-opacity));
+}
+
+.opacity-\[100\%\] {
+  opacity: 100%;
+}
+
+.shadow-md {
+  --tw-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --tw-shadow-colored: 0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
 .inactive {
@@ -817,11 +923,22 @@ video {
 .updateBlog {
   color: #2563EB;
   cursor: pointer;
+  padding: 2px;
 }
 
 .deleteBlog {
   color: red;
   cursor: pointer;
+}
+
+.updateBlog:hover {
+  background-color: #6B7280;
+  border-radius: 4px;
+}
+
+.deleteBlog:hover {
+  background-color: #6B7280;
+  border-radius: 4px;
 }
 
 #parentDiv {
@@ -831,7 +948,9 @@ video {
   align-items: center;
   padding-bottom: 1.5em;
   margin-bottom: 6em;
-  border-bottom: dashed 1px #2563EB;
+  border-bottom: solid 1px gray;
+  text-overflow: ellipsis;
+  white-space: no-wrap;
 }
 
 #parentDiv2 {
@@ -854,11 +973,13 @@ video {
 
 #blogtime {
   font-style: italic;
+  font-weight: 100;
 }
 
 #blogAuthor {
   font-weight:bolder;
   color: #D97706;
+  font-style: italic;
 }
 
 .hover\:border-2:hover {
@@ -873,6 +994,16 @@ video {
 .hover\:border-blue-700:hover {
   --tw-border-opacity: 1;
   border-color: rgb(29 78 216 / var(--tw-border-opacity));
+}
+
+.hover\:bg-blue-400:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(96 165 250 / var(--tw-bg-opacity));
+}
+
+.hover\:bg-gray-200:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(229 231 235 / var(--tw-bg-opacity));
 }
 
 .hover\:bg-white:hover {

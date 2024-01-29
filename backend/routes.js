@@ -19,9 +19,9 @@ router
 
 router.route('/blog')
 .get(getBlog)
-.post(postBlog)
-.put(updateBlog)
-.delete(deleteBlog);
+.post(protect, postBlog)
+.put(protect, updateBlog)
+.delete(protect, deleteBlog);
 
 router.post('/signout');
 

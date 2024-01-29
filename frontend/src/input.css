@@ -26,6 +26,7 @@
 .updateBlog {
     color: #2563EB;
     cursor: pointer;
+    padding: 2px;
 }
 
 .deleteBlog {
@@ -33,6 +34,15 @@
     cursor: pointer;
 }
 
+.updateBlog:hover {
+    background-color: #6B7280;
+    border-radius: 4px;
+}
+
+.deleteBlog:hover {
+    background-color: #6B7280;
+    border-radius: 4px;
+}
 #parentDiv {
     display: flex;
     flex-direction: column;
@@ -40,7 +50,9 @@
     align-items: center;
     padding-bottom: 1.5em;
     margin-bottom: 6em;
-    border-bottom: dashed 1px #2563EB;
+    border-bottom: solid 1px gray;
+    text-overflow: ellipsis;
+    white-space: no-wrap;
 }
 
 #parentDiv2 {
@@ -63,9 +75,11 @@
 
 #blogtime {
     font-style: italic;
+    font-weight: 100;
 }
 
 #blogAuthor {
     font-weight:bolder;
     color: #D97706;
+    font-style: italic;
 }
