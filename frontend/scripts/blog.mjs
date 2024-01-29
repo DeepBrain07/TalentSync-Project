@@ -113,7 +113,7 @@ axios.get('https://test-talent-sync-project.onrender.com/blog', {params: {numOfP
             const postId = deleteBlog.id;
             const numOfPosts = localStorage.getItem('numOfPosts');
             const formData = {token, userId, postId, numOfPosts}
-            axios.delete('https://test-talent-sync-project.onrender.com', {data:formData})
+            axios.delete('https://test-talent-sync-project.onrender.com/blog', {data:formData})
                 .then(response => {
                     console.log(response.status)
                     if (response.status === 200) {
